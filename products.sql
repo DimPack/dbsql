@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS "products";
 CREATE TABLE IF NOT EXISTS "products"(
-    "nameProduct" VARCHAR(64) NOT NULL CHECK("nameProduct" != '') UNIQUE,
+    "product" VARCHAR(64) NOT NULL CHECK("product" != '') UNIQUE,
     "price" NUMERIC(7, 2) NOT NULL CHECK (
         "price" > 0
         AND "price" <= 10000
@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS "products"(
         "numberPieces" >= 0
         AND "numberPieces" < 1000
     ) DEFAULT 0,
-    "currency" VARCHAR(3) NOT NULL CHECK(LENGTH("currency") = 3) DEFAULT 'uah',
-    "isPromotion" BOOLEAN DEFAULT false
+    "currency" CHAR(3) NOT NULL CHECK(LENGTH("currency") = 3) DEFAULT 'uah',
+    "isSale" BOOLEAN DEFAULT false
 );
 INSERT INTO "products"
 VaLUES(
