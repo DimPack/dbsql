@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS "users";
 CREATE TABLE IF NOT EXISTS "users"(
-    "id" serial PRIMARY KEY, 
+    "id" serial PRIMARY KEY,
     "firstName" varchar(32) NOT NULL CONSTRAINT not_empty_first_name CHECK("firstName" != ''),
     "lastName" varchar(32) NOT NULL CHECK(
         length("lastName") >= 3
@@ -16,11 +16,19 @@ CREATE TABLE IF NOT EXISTS "users"(
         AND "weight" <= 250
     ),
     --123.45
-    "birthday" date NOT NULL CHECK("birthday"< current_date),
+    "birthday" date NOT NULL CHECK("birthday" < current_date),
     "isMale" boolean NOT NULL
 );
-INSERT INTO "users"
-VaLUES(
+INSERT INTO users (
+        "firstName",
+        "lastName",
+        email,
+        height,
+        weight,
+        birthday,
+        "isMale"
+    )
+VALUES (
         'Bo',
         'Ozzi',
         'oz@gmail.com',
@@ -28,9 +36,8 @@ VaLUES(
         90,
         '2024-07-16',
         true
-    );
-INSERT INTO "users"
-VaLUES(
+    ),
+(
         'Brad',
         'Pitt',
         'pitt@gmail.com',
